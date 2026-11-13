@@ -8,7 +8,7 @@
     fetch(API + '/api/license/session', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ session_id: id }) })
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        if (j.ready) { document.getElementById('code').textContent = j.code; show('done'); return; }
+        if (j.ready) { document.getElementById('code').textContent = j.code; document.getElementById('ref').textContent = j.refCode || ''; show('done'); return; }
         again();
       }).catch(again);
   }
