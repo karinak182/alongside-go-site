@@ -1,0 +1,6 @@
+{
+  // Alongside Go website: simple pages only, no code running behind them.
+  "name": "alongside-go-site",
+  "compatibility_date": "2025-11-01",
+  "assets": { "directory": "./public" }
+}
