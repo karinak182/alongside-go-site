@@ -20,6 +20,8 @@
   --bg:#121c26; --card:#1b2937; --ink:#e9f0f5; --muted:#a9b9c7; --line:#2b3e50;
   --navy:#0e1822; --blue:#7fa8c9; --blue-deep:#9cc0dc; --mauve:#a8879a; --gold:#e3bd6c;
   --tint:#223446; --gold-soft:#352d1c; --on-navy:#f1f6fa; --on-navy-muted:#a9b9c7; --on-blue:#10202e; color-scheme:dark}
+/* Gentle image protection: no dragging, no long-press save, no right-click menu on pictures */
+img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;margin:0}
 .gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
@@ -229,6 +231,8 @@ footer a{color:var(--on-navy)}
 <footer class="gut"><div class="in"><div>Alongside Go is made by Alongside OT.</div><div>&copy; 2026 Alongside OT</div></div></footer>
 
 <script>
+document.addEventListener('contextmenu',function(e){if(e.target&&e.target.tagName==='IMG')e.preventDefault();});
+document.addEventListener('dragstart',function(e){if(e.target&&e.target.tagName==='IMG')e.preventDefault();});
 document.getElementById('signup').addEventListener('submit',function(e){
   e.preventDefault();
   var role=document.getElementById('role');
