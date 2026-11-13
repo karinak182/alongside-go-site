@@ -12,7 +12,7 @@
     err.hidden = true;
     if (!role.value) { role.focus(); fail('Please tell us what you do.'); return; }
     btn.disabled = true; btn.textContent = 'One moment...';
-    fetch(API + '/api/checkout', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ role: role.value, source: document.getElementById('source').value, plan: document.getElementById('plan').value }) })
+    fetch(API + '/api/checkout', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ role: role.value, source: document.getElementById('source').value, referral: document.getElementById('referral').value, plan: document.getElementById('plan').value }) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) {
         if (x.ok && x.j.url) { window.location.href = x.j.url; return; }
