@@ -2,6 +2,25 @@
   var API = 'https://app.alongsidego.com';
   document.addEventListener('contextmenu', function (e) { if (e.target && e.target.tagName === 'IMG') e.preventDefault(); });
   document.addEventListener('dragstart', function (e) { if (e.target && e.target.tagName === 'IMG') e.preventDefault(); });
+  // Menu links glide to their section and leave the address bar clean (no #pricing and so on).
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function jump(id) {
+    var el = id === 'top' || !id ? document.body : document.getElementById(id);
+    if (!el) return false;
+    if (id === 'top' || !id) window.scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' });
+    else el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+    return true;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (jump(id)) { e.preventDefault(); if (history.replaceState) history.replaceState(null, '', location.pathname + location.search); }
+  });
+  if (location.hash && history.replaceState) {
+    var start = location.hash.slice(1);
+    setTimeout(function () { jump(start); history.replaceState(null, '', location.pathname + location.search); }, 50);
+  }
   var form = document.getElementById('signup');
   if (!form) return;
   var err = document.getElementById('err'), btn = document.getElementById('go');
