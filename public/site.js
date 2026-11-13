@@ -21,6 +21,28 @@
     var start = location.hash.slice(1);
     setTimeout(function () { jump(start); history.replaceState(null, '', location.pathname + location.search); }, 50);
   }
+  // demo clips play while visible, never for people who prefer less motion, and can always be paused
+  var vids = [].slice.call(document.querySelectorAll('.vwrap video'));
+  vids.forEach(function (v) {
+    var btn = v.parentNode.querySelector('.vbtn'), userPaused = calm;
+    function label() { btn.textContent = v.paused ? 'Play' : 'Pause'; btn.setAttribute('aria-label', v.paused ? 'Play the demo' : 'Pause the demo'); }
+    btn.addEventListener('click', function () { if (v.paused) { userPaused = false; v.play().catch(function () {}); } else { userPaused = true; v.pause(); } label(); });
+    v.addEventListener('play', label); v.addEventListener('pause', label); label();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !userPaused) v.play().catch(function () {}); else v.pause(); }); }, { threshold: 0.5 }).observe(v);
+    } else if (!calm) { v.play().catch(function () {}); }
+  });
+  // reviews carousel
+  var track = document.getElementById('track');
+  if (track) {
+    var cards = [].slice.call(track.children), cnt = document.getElementById('cnt');
+    var at = function () { return Math.round(track.scrollLeft / (track.clientWidth + 16)); };
+    var go = function (i) { i = Math.max(0, Math.min(cards.length - 1, i)); track.scrollTo({ left: i * (track.clientWidth + 16), behavior: calm ? 'auto' : 'smooth' }); };
+    document.getElementById('prev').addEventListener('click', function () { go(at() - 1); });
+    document.getElementById('next').addEventListener('click', function () { go(at() + 1); });
+    track.addEventListener('scroll', function () { cnt.textContent = (at() + 1) + ' of ' + cards.length; });
+    track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(at() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(at() - 1); } });
+  }
   var form = document.getElementById('signup');
   if (!form) return;
   var err = document.getElementById('err'), btn = document.getElementById('go');
