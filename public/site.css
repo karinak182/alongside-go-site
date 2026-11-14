@@ -124,7 +124,8 @@ footer a{color:var(--on-navy)}
 .demo>*{min-width:0}
 .vwrap{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 18px 40px -18px rgba(30,50,70,.35)}
 .vwrap video{display:block;width:100%;height:auto}
-.vbtn{position:absolute;right:10px;bottom:10px;min-height:36px;padding:0 14px;border-radius:999px;border:0;background:var(--navy);color:var(--on-navy);font:inherit;font-weight:700;font-size:14px;cursor:pointer;opacity:.9}
+.vbtn{position:absolute;right:10px;bottom:10px;width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;border:0;background:var(--navy);color:var(--on-navy);cursor:pointer;opacity:.9}
+.vbtn svg{display:block}
 .demo figcaption{color:var(--muted);font-size:16px}
 .demo figcaption strong{color:var(--ink)}
 /* reviews */
@@ -172,3 +173,6 @@ img{max-width:100%}[hidden]{display:none!important}
 .nav .btn .short{display:inline}
 .top .nav .btn{padding:0 16px}
 }
+
+.chips.collapsed{overflow:hidden}
+.chips-more{margin-top:14px;min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--blue);background:transparent;color:var(--blue-deep);font:inherit;font-weight:700;font-size:15px;cursor:pointer}

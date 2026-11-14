@@ -22,16 +22,42 @@
     setTimeout(function () { jump(start); history.replaceState(null, '', location.pathname + location.search); }, 50);
   }
   // demo clips play while visible, never for people who prefer less motion, and can always be paused
+  var PLAY = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
+  var PAUSE = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="6.5" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>';
   var vids = [].slice.call(document.querySelectorAll('.vwrap video'));
   vids.forEach(function (v) {
     var btn = v.parentNode.querySelector('.vbtn'), userPaused = calm;
-    function label() { btn.textContent = v.paused ? 'Play' : 'Pause'; btn.setAttribute('aria-label', v.paused ? 'Play the demo' : 'Pause the demo'); }
+    function label() { btn.innerHTML = v.paused ? PLAY : PAUSE; btn.setAttribute('aria-label', v.paused ? 'Play the demo' : 'Pause the demo'); }
     btn.addEventListener('click', function () { if (v.paused) { userPaused = false; v.play().catch(function () {}); } else { userPaused = true; v.pause(); } label(); });
     v.addEventListener('play', label); v.addEventListener('pause', label); label();
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !userPaused) v.play().catch(function () {}); else v.pause(); }); }, { threshold: 0.5 }).observe(v);
     } else if (!calm) { v.play().catch(function () {}); }
   });
+
+  // on phones, show two rows of "who it's for" and tuck the rest behind a button
+  var chips = document.querySelector('#who .chips');
+  if (chips) {
+    var more = document.createElement('button');
+    more.type = 'button'; more.className = 'chips-more'; more.hidden = true; more.setAttribute('aria-expanded', 'false');
+    chips.parentNode.insertBefore(more, chips.nextSibling);
+    var open = false, mq = window.matchMedia('(max-width: 640px)');
+    var fit = function () {
+      chips.style.maxHeight = ''; chips.classList.remove('collapsed'); more.hidden = true;
+      if (!mq.matches) return;
+      var kids = [].slice.call(chips.children), tops = [];
+      kids.forEach(function (k) { if (tops.indexOf(k.offsetTop) < 0) tops.push(k.offsetTop); });
+      if (tops.length <= 3) return;
+      var hidden = kids.filter(function (k) { return k.offsetTop >= tops[3]; }).length;
+      more.hidden = false;
+      more.textContent = open ? 'Show fewer' : 'See ' + hidden + ' more';
+      more.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (!open) { chips.classList.add('collapsed'); chips.style.maxHeight = (tops[3] - tops[0] - 10) + 'px'; }
+    };
+    more.addEventListener('click', function () { open = !open; fit(); });
+    if (mq.addEventListener) mq.addEventListener('change', fit); window.addEventListener('resize', fit);
+    fit(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  }
   // reviews carousel
   var track = document.getElementById('track');
   if (track) {
