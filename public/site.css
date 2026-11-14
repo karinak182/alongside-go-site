@@ -163,3 +163,12 @@ footer .flinks a{margin:0 2px}
 .demo{min-width:0}
 img{max-width:100%}[hidden]{display:none!important}
 @media (max-width:520px){.top .in{flex-wrap:nowrap;gap:10px}.top .brand{font-size:18px;gap:8px;white-space:nowrap}.top .nav .btn{min-height:40px;padding:0 14px;font-size:14px;white-space:nowrap}}
+.nav .btn .short{display:none}
+@media (max-width:520px){
+.top .in{gap:16px}
+.top .brand{font-size:17px;min-width:0}
+.top .brand img{width:36px;height:36px}
+.nav .btn .long{display:none}
+.nav .btn .short{display:inline}
+.top .nav .btn{padding:0 16px}
+}
