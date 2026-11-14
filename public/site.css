@@ -159,3 +159,7 @@ footer .in{align-items:flex-start}
 .fine{margin-top:12px;color:var(--muted);font-size:14px}
 .fine a{color:var(--blue-deep)}
 footer .flinks a{margin:0 2px}
+.demos{grid-template-columns:minmax(0,1fr)}
+.demo{min-width:0}
+img{max-width:100%}[hidden]{display:none!important}
+@media (max-width:520px){.top .in{flex-wrap:nowrap;gap:10px}.top .brand{font-size:18px;gap:8px;white-space:nowrap}.top .nav .btn{min-height:40px;padding:0 14px;font-size:14px;white-space:nowrap}}
