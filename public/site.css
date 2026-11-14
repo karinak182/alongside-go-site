@@ -176,3 +176,5 @@ img{max-width:100%}[hidden]{display:none!important}
 
 .chips.collapsed{overflow:hidden}
 .chips-more{margin-top:14px;min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--blue);background:transparent;color:var(--blue-deep);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.chips span.and-more{background:transparent;border-style:dashed;color:var(--muted)}
+@media (max-width:760px){.priv .shot{justify-self:center;margin-inline:auto}}
