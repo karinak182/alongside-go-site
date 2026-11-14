@@ -148,3 +148,14 @@ footer .in{align-items:flex-start}
 .demo:nth-child(even) .vwrap{order:2}
 .demo figcaption{font-size:19px;line-height:1.55}
 }
+.legal{max-width:44em;margin:0 auto;padding-block:48px 72px}
+.legal h1{margin-bottom:6px}
+.legal .upd{color:var(--muted);margin-bottom:24px}
+.legal h2{margin-top:32px;margin-bottom:8px;font-size:22px}
+.legal p,.legal li{font-size:17px;line-height:1.65}
+.legal p{margin-top:10px}
+.legal ul{margin:10px 0 0 22px;display:flex;flex-direction:column;gap:8px}
+.legal a{color:var(--blue-deep)}
+.fine{margin-top:12px;color:var(--muted);font-size:14px}
+.fine a{color:var(--blue-deep)}
+footer .flinks a{margin:0 2px}
