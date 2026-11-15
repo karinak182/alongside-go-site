@@ -178,3 +178,27 @@ img{max-width:100%}[hidden]{display:none!important}
 .chips-more{margin-top:14px;min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--blue);background:transparent;color:var(--blue-deep);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
 .chips span.and-more{background:transparent;border-style:dashed;color:var(--muted)}
 @media (max-width:760px){.priv .shot{justify-self:center;margin-inline:auto}}
+
+.fmt{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 28px}
+.fmt-label{font-weight:700;color:var(--muted);font-size:15px}
+.seg{display:inline-flex;background:var(--tint);border-radius:999px;padding:4px}
+.seg button{font:inherit;font-weight:700;font-size:15px;min-height:40px;padding:0 20px;border:0;border-radius:999px;background:transparent;color:var(--blue-deep);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--on-navy)}
+.seg button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.demos[data-fmt="computer"] .v-phone,.demos[data-fmt="computer"] .cap-phone{display:none}
+.demos[data-fmt="phone"] .v-computer,.demos[data-fmt="phone"] .cap-computer{display:none}
+.v-phone{width:min(100%,290px);margin-inline:auto;border:6px solid var(--navy);border-radius:30px;aspect-ratio:390/844;background:var(--navy)}
+.v-phone video{height:100%;object-fit:cover}
+.swipe{display:none;margin-top:10px;color:var(--muted);font-size:14px;text-align:center}
+@media (min-width:900px){
+.demos[data-fmt="phone"]{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;align-items:start}
+.demos[data-fmt="phone"] .demo,.demos[data-fmt="phone"] .demo:nth-child(even){display:flex;flex-direction:column;gap:20px}
+.demos[data-fmt="phone"] .demo:nth-child(even) .vwrap{order:0}
+.demos[data-fmt="phone"] .demo figcaption{font-size:17px;max-width:24em}
+}
+@media (max-width:640px){
+.demos[data-fmt="phone"]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;margin-inline:-20px;padding:0 20px 8px;-webkit-overflow-scrolling:touch}
+.demos[data-fmt="phone"] .demo{flex:0 0 80%;scroll-snap-align:center}
+.demos[data-fmt="phone"] ~ .swipe{display:block}
+}
+.v-phone .vbtn{bottom:auto;top:62px;right:14px;width:38px;height:38px}

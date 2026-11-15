@@ -21,6 +21,14 @@
     var start = location.hash.slice(1);
     setTimeout(function () { jump(start); history.replaceState(null, '', location.pathname + location.search); }, 50);
   }
+  // Computer / Phone switch for the demo clips. Phones start on the phone version.
+  var list = document.getElementById('demolist');
+  if (list) {
+    var segs = [].slice.call(document.querySelectorAll('.seg button'));
+    var setFmt = function (f) { list.setAttribute('data-fmt', f); segs.forEach(function (s) { s.setAttribute('aria-pressed', s.getAttribute('data-fmt') === f ? 'true' : 'false'); }); };
+    segs.forEach(function (s) { s.addEventListener('click', function () { setFmt(s.getAttribute('data-fmt')); }); });
+    if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) setFmt('phone');
+  }
   // demo clips play while visible, never for people who prefer less motion, and can always be paused
   var PLAY = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
   var PAUSE = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="6.5" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>';

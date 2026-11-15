@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e4a63">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="site.css?v=16"></head>
+<link rel="stylesheet" href="site.css?v=18"></head>
 <body>
 
 <header class="top gut">
@@ -63,20 +63,25 @@
   <section class="band gut" id="demos">
     <div class="in">
       <div class="head"><div class="eyebrow">See it in action</div><h2>A few taps, and it's done.</h2><p>Short clips of the real app. The clients shown are made up.</p></div>
-      <div class="demos">
+      <div class="fmt" role="group" aria-label="Choose how to watch the demos"><span class="fmt-label">Watch on</span><div class="seg"><button type="button" data-fmt="computer" aria-pressed="true">Computer</button><button type="button" data-fmt="phone" aria-pressed="false">Phone</button></div></div>
+      <div class="demos" id="demolist" data-fmt="computer">
         <figure class="demo">
-          <div class="vwrap"><video muted loop playsinline preload="metadata" poster="media/demo-drag.jpg" aria-label="Screen recording: dragging a visit to a new time on the week calendar" width="1120" height="630"><source src="media/demo-drag.mp4?v=2" type="video/mp4"><source src="media/demo-drag.webm?v=2" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
-          <figcaption><strong>Move a visit in one drag.</strong> Drop it on a new day or time, and the app reminds you to let the client know.</figcaption>
+          <div class="vwrap v-computer"><video muted loop playsinline preload="metadata" poster="media/demo-drag.jpg" aria-label="Screen recording: dragging a visit to a new time on the week calendar" width="1120" height="630"><source src="media/demo-drag.mp4?v=2" type="video/mp4"><source src="media/demo-drag.webm?v=2" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
+          <div class="vwrap v-phone"><video muted loop playsinline preload="none" poster="media/demo-move-phone.jpg?v=1" aria-label="Screen recording on a phone: moving a visit to a new day and time, then the text reminder" width="390" height="844"><source src="media/demo-move-phone.mp4?v=1" type="video/mp4"><source src="media/demo-move-phone.webm?v=1" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
+          <figcaption><span class="cap-computer"><strong>Move a visit in one drag.</strong> Drop it on a new day or time, and the app reminds you to let the client know.</span><span class="cap-phone"><strong>Move a visit in a few taps.</strong> Pick a new day and time, and the app reminds you to let the client know.</span></figcaption>
         </figure>
         <figure class="demo">
-          <div class="vwrap"><video muted loop playsinline preload="metadata" poster="media/demo-makeups.jpg" aria-label="Screen recording: choosing the best makeup time and getting the text ready" width="1120" height="630"><source src="media/demo-makeups.mp4?v=2" type="video/mp4"><source src="media/demo-makeups.webm?v=2" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
+          <div class="vwrap v-computer"><video muted loop playsinline preload="metadata" poster="media/demo-makeups.jpg" aria-label="Screen recording: choosing the best makeup time and getting the text ready" width="1120" height="630"><source src="media/demo-makeups.mp4?v=2" type="video/mp4"><source src="media/demo-makeups.webm?v=2" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
+          <div class="vwrap v-phone"><video muted loop playsinline preload="none" poster="media/demo-makeups-phone.jpg?v=1" aria-label="Screen recording on a phone: choosing the best makeup time and getting the text ready" width="390" height="844"><source src="media/demo-makeups-phone.mp4?v=1" type="video/mp4"><source src="media/demo-makeups-phone.webm?v=1" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
           <figcaption><strong>Find a makeup time and text the client.</strong> The app suggests the best fit and writes the message for you.</figcaption>
         </figure>
         <figure class="demo">
-          <div class="vwrap"><video muted loop playsinline preload="metadata" poster="media/demo-year.jpg" aria-label="Screen recording: opening the mileage page and then the year in review with miles, visits and busiest day" width="1120" height="630"><source src="media/demo-year.mp4?v=1" type="video/mp4"><source src="media/demo-year.webm?v=1" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
+          <div class="vwrap v-computer"><video muted loop playsinline preload="metadata" poster="media/demo-year.jpg" aria-label="Screen recording: opening the mileage page and then the year in review with miles, visits and busiest day" width="1120" height="630"><source src="media/demo-year.mp4?v=1" type="video/mp4"><source src="media/demo-year.webm?v=1" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
+          <div class="vwrap v-phone"><video muted loop playsinline preload="none" poster="media/demo-year-phone.jpg?v=1" aria-label="Screen recording on a phone: opening the mileage page and then the year in review" width="390" height="844"><source src="media/demo-year-phone.mp4?v=1" type="video/mp4"><source src="media/demo-year-phone.webm?v=1" type="video/webm"></video><button class="vbtn" type="button" aria-label="Pause the demo"></button></div>
           <figcaption><strong>Miles for tax time, and a look back at your year.</strong> See your miles and visits, your busiest day, and where you went most. These example numbers are made up.</figcaption>
         </figure>
       </div>
+      <p class="swipe" aria-hidden="true">Swipe to see all three &rarr;</p>
       <p class="inline-cta"><a class="btn primary" href="#join">Try it free for 14 days</a></p>
     </div>
   </section>
@@ -181,5 +186,5 @@
 
 <footer class="gut"><div class="in"><div class="fmsg"><p>Alongside Go is made by <a href="https://alongsideot.com" target="_blank" rel="noopener">Alongside OT</a>, which builds tools to support the supporters, so they can focus on what matters most: caring for the people they work with.</p><p>Questions? <a href="mailto:hello@alongsidego.com">hello@alongsidego.com</a></p></div><div class="flinks"><a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; &copy; 2026 Alongside OT</div></div></footer>
 
-<script src="site.js?v=11"></script>
+<script src="site.js?v=12"></script>
 </body></html>
