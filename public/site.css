@@ -207,3 +207,4 @@ img{max-width:100%}[hidden]{display:none!important}
 .diff .head h2{text-wrap:balance}
 .diff .head p{font-size:19px;line-height:1.6}
 .diff .grid{margin-top:8px}
+.quote{border:1px solid var(--line);border-left:6px solid var(--mauve)}
