@@ -208,3 +208,9 @@ img{max-width:100%}[hidden]{display:none!important}
 .diff .head p{font-size:19px;line-height:1.6}
 .diff .grid{margin-top:8px}
 .quote{border:1px solid var(--line);border-left:6px solid var(--mauve)}
+.manage form{display:flex;flex-direction:column;gap:12px;max-width:26em;margin:18px 0 26px}
+.manage input{font:inherit;font-weight:600;font-size:18px;letter-spacing:1px;padding:13px 14px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:inherit;min-width:0}
+.manage input:focus-visible{outline:3px solid #eac783;outline-offset:2px}
+.manage .btn{align-self:flex-start;border:0;cursor:pointer;font:inherit;font-weight:700}
+.manage .btn:disabled{opacity:.6;cursor:default}
+.mmsg{margin:0;color:var(--ink)}
