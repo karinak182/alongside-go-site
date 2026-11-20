@@ -5,6 +5,12 @@
   'use strict';
   var URL_ = 'https://app.alongsidego.com/api/t';
   if (!navigator.sendBeacon || /bot|crawl|spider|headless/i.test(navigator.userAgent || '')) return;
+  // The owner's own browsers: open the site once with ?nocount (or ?count to undo) and her visits are left out
+  try {
+    if (/[?&]nocount\b/.test(location.search)) localStorage.setItem('ag-nocount', '1');
+    if (/[?&]count\b/.test(location.search)) localStorage.removeItem('ag-nocount');
+    if (localStorage.getItem('ag-nocount') === '1') return;
+  } catch (e) { /* storage blocked: count as normal */ }
   var id;
   try { id = sessionStorage.getItem('ag-v'); if (!id) { id = Math.random().toString(36).slice(2, 12) + Date.now().toString(36); sessionStorage.setItem('ag-v', id); } } catch (e) { id = Math.random().toString(36).slice(2, 12) + Date.now().toString(36); }
   var started = Date.now(), before = 0;
